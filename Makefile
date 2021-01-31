@@ -27,14 +27,14 @@ fish: FISH=/usr/local/bin/fish
 fish: brew
 ifdef GITHUB_ACTION
 	if ! grep -q $(FISH) $(SHELLS); then \
-		brew install fish && \
+		brew install fish pcre && \
 		curl -L https://get.oh-my.fish > install.fish && fish install.fish --noninteractive --yes && rm install.fish && \
 		sudo append $(FISH) $(SHELLS) && \
 		sudo chsh -s $(FISH); \
 	fi
 else
 	if ! grep -q $(FISH) $(SHELLS); then \
-		brew install fish && \
+		brew install fish pcre && \
 		curl -L https://get.oh-my.fish > install.fish && fish install.fish --noninteractive --yes && rm install.fish && \
 		sudo append $(FISH) $(SHELLS) && \
 		chsh -s $(FISH); \
