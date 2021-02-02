@@ -45,8 +45,8 @@ git: brew
 	brew install git git-extras
 
 npm:
-	is-executable nvm || brew install nvm
-	nvm install --lts
+	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/nvm-sh/nvm $(NVM_DIR); fi
+	. $(NVM_DIR)/nvm.sh; nvm install --lts
 
 rbenv: brew
 	is-executable rbenv || brew install rbenv
