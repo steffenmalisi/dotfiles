@@ -17,7 +17,7 @@ ifndef GITHUB_ACTION
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
 
-core: brew fish git npm ruby
+core: brew fish git npm ruby sdkman
 
 # -------------- CORE Binaries ------------------
 brew:
@@ -45,17 +45,19 @@ git: brew
 	brew install git git-extras
 
 npm:
-	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/creationix/nvm.git $(NVM_DIR); fi
-	. $(NVM_DIR)/nvm.sh; nvm install --lts
+	is-executable nvm || brew install nvm
+	nvm install --lts
 
-rbenv: brew-$(OS)
+rbenv: brew
 	is-executable rbenv || brew install rbenv
 
 ruby: LATEST_RUBY=$(shell rbenv install -l | grep -v - | tail -1)
-ruby: brew-$(OS) rbenv
+ruby: rbenv
 	rbenv install -s $(LATEST_RUBY)
 	rbenv global $(LATEST_RUBY)
 
+sdkman:
+	curl -s "https://get.sdkman.io" | bash
 
 # -------------- Packages ------------------
 packages: brew-packages cask-apps node-packages
