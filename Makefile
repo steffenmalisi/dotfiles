@@ -3,6 +3,7 @@ SHELLS=/private/etc/shells
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 NVM_DIR := $(HOME)/.nvm
+SDKMAN_DIR := $(HOME)/.sdkman
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -57,23 +58,25 @@ ruby: rbenv
 	rbenv global $(LATEST_RUBY)
 
 sdkman:
-	curl -s "https://get.sdkman.io" | bash
+	if ! [ -d $(SDKMAN_DIR) ]; then curl -s "https://get.sdkman.io" | bash; fi
 
 # -------------- Packages ------------------
-packages: brew-packages cask-apps node-packages
+packages: brew-packages cask-apps sdk-packages
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile
 
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
-	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+	#defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
-	xattr -d -r com.apple.quarantine ~/Library/QuickLook
+	#xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
 
+sdk-packages: sdkman
+	. $(SDKMAN_DIR)/bin/sdkman-init.sh; while read line; do sdk install $$line; done < install/Sdkfile
 
 # -------------- Stow Linking ------------------
 stow: brew

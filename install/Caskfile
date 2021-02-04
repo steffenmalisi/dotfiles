@@ -1,4 +1,4 @@
-cask "adobe-reader"
+cask "adobe-acrobat-reader"
 cask "firefox"
 cask "keeweb"
 cask "onedrive"

@@ -1,4 +1,4 @@
 tap "cloudfoundry/tap"
 
-brew "aws-cli"
+brew "awscli"
 brew "cf-cli"
