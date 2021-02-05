@@ -1,0 +1,2 @@
+set -xg XDG_CONFIG_HOME ~/.config
+set -xg HOMEBREW_NO_ANALYTICS 1

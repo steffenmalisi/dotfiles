@@ -87,7 +87,7 @@ link: stow
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p $(XDG_CONFIG_HOME)
 	stow -t $(HOME) runcom
-	stow -t $(XDG_CONFIG_HOME) config
+	rm -rf $(XDG_CONFIG_HOME)/fish $(XDG_CONFIG_HOME)/omf && stow -t $(XDG_CONFIG_HOME) config
 
 unlink: stow
 	stow --delete -t $(HOME) runcom
