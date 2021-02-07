@@ -1,4 +1,11 @@
 tap "cloudfoundry/tap"
 
 brew "awscli"
+brew "ccrypt"
 brew "cf-cli"
+brew "ffmpeg"
+brew "gopass"
+brew "jq"
+brew "mitmproxy"
+brew "mysql-client"
+brew "speedtest-cli"
