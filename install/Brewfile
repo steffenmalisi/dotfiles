@@ -1,6 +1,7 @@
 tap "cloudfoundry/tap"
 
 brew "awscli"
+brew "bash"
 brew "ccrypt"
 brew "cf-cli"
 brew "ffmpeg"
