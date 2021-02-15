@@ -1,3 +1,5 @@
+tap "homebrew/cask-fonts"
+
 cask "adobe-acrobat-reader"
 cask "balenaetcher"
 cask "chromium"
