@@ -41,7 +41,7 @@ else
 endif
 
 omf: fish
-	curl -L https://get.oh-my.fish > install.fish && fish install.fish --noninteractive --yes && rm install.fish && \
+	curl -L https://get.oh-my.fish > install.fish && fish install.fish --noninteractive --yes && rm install.fish
 
 git: brew
 	brew install git git-extras
