@@ -97,7 +97,7 @@ unlink: stow
 # -------------- Other ------------------
 
 mac-defaults:
-	$(DOTFILES_DIR)/dotfiles macos
+	dotfiles macos
 
 test:
 	. $(NVM_DIR)/nvm.sh; bats test
