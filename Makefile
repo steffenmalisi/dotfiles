@@ -74,7 +74,7 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
-	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
+	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/Npmfile)
 
 sdk-packages: sdkman
 	. $(SDKMAN_DIR)/bin/sdkman-init.sh; while read line; do sdk install $$line; done < install/Sdkfile
@@ -96,7 +96,7 @@ unlink: stow
 
 # -------------- Other ------------------
 
-mac-defaults:
+macos:
 	dotfiles macos
 
 test:
