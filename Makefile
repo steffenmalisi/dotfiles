@@ -11,7 +11,7 @@ export ACCEPT_EULA=Y
 
 .PHONY: test
 
-all: sudo core packages link
+all: sudo core packages link macos
 
 sudo:
 ifndef GITHUB_ACTION
@@ -62,7 +62,7 @@ sdkman:
 	if ! [ -d $(SDKMAN_DIR) ]; then curl -s "https://get.sdkman.io" | bash; fi
 
 # -------------- Packages ------------------
-packages: brew-packages cask-apps sdk-packages omf-packages
+packages: brew-packages cask-apps mas-apps node-packages sdk-packages omf-packages
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile
@@ -74,7 +74,7 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 mas-apps: brew
-	brew bundle --file=$(DOTFILES_DIR)/install/Masfile
+	if mas account > /dev/null; then brew bundle --file=$(DOTFILES_DIR)/install/Masfile; fi
 
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/Npmfile)
