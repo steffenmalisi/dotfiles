@@ -73,6 +73,9 @@ cask-apps: brew
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
+mas-apps: brew
+	brew bundle --file=$(DOTFILES_DIR)/install/Masfile
+
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/Npmfile)
 
@@ -90,6 +93,7 @@ stow: brew
 link: stow
 	mkdir -p $(XDG_CONFIG_HOME)
 	rm -rf $(XDG_CONFIG_HOME)/fish $(XDG_CONFIG_HOME)/omf && stow -t $(XDG_CONFIG_HOME) config
+	ln -s $(HOME)/.config/mackup/.mackup.cfg $(HOME)
 
 unlink: stow
 	stow --delete -t $(XDG_CONFIG_HOME) config
