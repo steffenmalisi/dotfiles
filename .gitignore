@@ -1,3 +1,2 @@
-Brewfile.lock.json
-Caskfile.lock.json
+*.lock.json
 extra
