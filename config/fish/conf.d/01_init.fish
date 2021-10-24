@@ -1,6 +1,7 @@
 set -gx DOTFILES_DIR ~/.dotfiles
 set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx XDG_CONFIG_HOME ~/.config
+set -gx GPG_TTY (tty)
 
 set PATH $DOTFILES_DIR/bin $PATH
 set PATH /usr/local/opt/mysql-client/bin $PATH
