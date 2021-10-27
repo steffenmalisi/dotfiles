@@ -1,3 +1,1 @@
-function awsume --wraps='bass source awsume' --description 'Sources awsu.me'
-  bass source awsume $argv;
-end
+alias awsume="source (which awsume.fish)"
