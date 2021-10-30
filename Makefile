@@ -62,7 +62,7 @@ sdkman:
 	if ! [ -d $(SDKMAN_DIR) ]; then curl -s "https://get.sdkman.io" | bash; fi
 
 # -------------- Packages ------------------
-packages: brew-packages cask-apps mas-apps node-packages sdk-packages omf-packages
+packages: brew-packages cask-apps mas-apps node-packages sdk-packages pipx-packages omf-packages
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile
@@ -81,6 +81,9 @@ node-packages: npm
 
 sdk-packages: sdkman
 	. $(SDKMAN_DIR)/bin/sdkman-init.sh; while read line; do sdk install $$line; done < install/Sdkfile
+
+pipx-packages: brew
+	while read line; do pipx install $$line; done < install/Pipxfile
 
 omf-packages: omf
 omf-packages: link
