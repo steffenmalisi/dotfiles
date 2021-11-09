@@ -147,6 +147,16 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable “natural” (Lion-style) scrolling
 #defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+# Mouse: Change mouse tracking speed
+# https://www.defaults-write.com/change-your-mouse-tracking-speed-in-mac-os-x/
+defaults write -g com.apple.mouse.scaling 3.0
+
+# Mouse: Use Secondary Click for Magic Mouse
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode TwoButton
+
+# Mouse: Use Smart Zoom for Magic Mouse
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture 1
+
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
@@ -790,7 +800,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 #defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
+# Chromium & Google Chrome & Google Chrome Canary                             #
 ###############################################################################
 
 # Disable the all too sensitive backswipe on trackpads
@@ -804,11 +814,17 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+defaults write org.chromium.Chromium DisablePrintPreview -bool true
 
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
+defaults write org.chromium.Chromium PMPrintingExpandedStateForPrint2 -bool true
 
+# Disable Dark Mode
+defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool yes
+defaults write com.google.Chrome.canary NSRequiresAquaSystemAppearance -bool yes
+defaults write org.chromium.Chromium NSRequiresAquaSystemAppearance -bool yes
 
 ###############################################################################
 # Kill affected applications                                                  #
