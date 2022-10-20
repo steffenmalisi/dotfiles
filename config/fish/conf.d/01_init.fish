@@ -4,6 +4,7 @@ set -gx XDG_CONFIG_HOME ~/.config
 set -gx GPG_TTY (tty)
 set -gx GOPATH $HOME/go;
 set -gx GOROOT $HOME/.go;
+set -gx CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 
 set PATH $DOTFILES_DIR/bin $PATH
 set PATH /usr/local/opt/mysql-client/bin $PATH

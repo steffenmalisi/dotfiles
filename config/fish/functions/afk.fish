@@ -1,3 +1,3 @@
 function afk
-    open /System/Library/CoreServices/ScreenSaverEngine.app
+    pmset displaysleepnow
 end

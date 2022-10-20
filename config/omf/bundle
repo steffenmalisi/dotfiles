@@ -3,4 +3,7 @@ package foreign-env
 package nvm
 package osx
 package sdk
+package thefuck
+package z
+theme agnoster
 theme default
