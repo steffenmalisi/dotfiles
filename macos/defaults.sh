@@ -2,7 +2,23 @@
 
 # ~/.macos — https://mths.be/macos
 
-COMPUTER_NAME="MacGyver"
+usage() {
+  echo "
+
+Sets defaults on MacOS
+
+Usage: ${0##*/} macos [host_name]
+
+Parameter:
+  host_name   the host name of your device, exposed in your local network
+
+"
+exit 1;
+}
+
+[ -z ${1+x} ] && usage
+
+COMPUTER_NAME="${1}"
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change

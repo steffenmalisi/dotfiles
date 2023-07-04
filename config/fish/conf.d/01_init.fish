@@ -11,7 +11,7 @@ set PATH /usr/local/opt/mysql-client/bin $PATH
 set PATH /usr/local/opt/openssl@1.1/bin $PATH
 set PATH /usr/local/opt/curl/bin $PATH
 set PATH $GOPATH/bin $PATH;
-set PATH $PATH /Users/smalisi/.local/bin
+set PATH $PATH $HOME/.local/bin
 
 for dir in $DOTFILES_DIR/bin/extra/*
   if test -d $dir
