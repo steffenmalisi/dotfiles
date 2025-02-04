@@ -10,11 +10,7 @@ export ACCEPT_EULA=Y
 
 .PHONY: test
 
-all: sudo core packages link
-
-sudo:
-	sudo -v
-	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+all: core packages link
 
 # -------------- CORE Binaries ------------------
 core: brew fish omf git npm
@@ -23,11 +19,7 @@ brew:
 	is-executable brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 fish: brew
-	if ! grep -q $(FISH) $(SHELLS); then \
-		brew install fish pcre && \
-		sudo append $(FISH) $(SHELLS) && \
-		chsh -s $(FISH); \
-	fi
+	brew install fish pcre
 
 omf: fish
 	curl -L https://get.oh-my.fish > install.fish && fish install.fish --noninteractive --yes && rm install.fish
@@ -55,7 +47,7 @@ omf-packages: omf
 omf-packages: link
 	$(FISH) -c 'omf install'
 
-colima:
+colima: brew
 	brew install colima docker docker-compose docker-credential-helper docker-buildx
 
 # -------------- Apps ------------------
