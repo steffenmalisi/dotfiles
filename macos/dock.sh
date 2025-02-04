@@ -7,7 +7,6 @@ dockutil --no-restart --add "/Applications/Chromium.app"
 dockutil --no-restart --add "/Applications/Firefox.app"
 dockutil --no-restart --add "/Applications/Postman.app"
 dockutil --no-restart --add "/Applications/Visual Studio Code.app"
-dockutil --no-restart --add "/Applications/IntelliJ IDEA.app"
 
 dockutil --no-restart --add "/Applications/Microsoft Outlook.app"
 dockutil --no-restart --add "/Applications/Microsoft Teams.app"

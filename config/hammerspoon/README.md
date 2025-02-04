@@ -12,13 +12,13 @@ The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Pres
 
 | Key | App                |
 | --- | ------------------ |
-| C   | Google Chrome      |
+| B   | Brave Browser      |
+| C   | Visual Studio Code |
 | F   | Finder             |
-| J   | IntelliJ IDEA      |
-| M   | Mail               |
+| M   | Outlook            |
 | P   | System Preferences |
 | T   | iTerm              |
-| V   | Visual Studio Code |
+
 
 ## Window Management
 

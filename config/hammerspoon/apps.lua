@@ -12,7 +12,6 @@ end
 hs.hotkey.bind(mash, "b", function() toggleApplication("Brave Browser") end)
 hs.hotkey.bind(mash, "c", function() toggleApplication("Visual Studio Code") end)
 hs.hotkey.bind(mash, "f", function() toggleApplication("Finder") end)
-hs.hotkey.bind(mash, "m", function() toggleApplication("Mail") end)
+hs.hotkey.bind(mash, "m", function() toggleApplication("Microsoft Outlook") end)
 hs.hotkey.bind(mash, "p", function() toggleApplication("System Preferences") end)
 hs.hotkey.bind(mash, "t", function() toggleApplication("iTerm") end)
-hs.hotkey.bind(mash, "v", function() toggleApplication("Visual Studio Code") end)
