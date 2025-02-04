@@ -16,7 +16,7 @@ all: core packages link
 core: brew fish omf git npm
 
 brew:
-	is-executable brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
 fish: brew
 	brew install fish pcre
