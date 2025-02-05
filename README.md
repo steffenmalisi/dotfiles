@@ -27,11 +27,6 @@ make
 - `dotfiles macos`
 - `dotfiles dock`
 
-
-#### 4.2 Restore Mackup
-First configure your Mackup backup file store (in my case it is Nextcloud).
-Then run `mackup restore`
-
 #### 4.3 Setup Browser Plugins
 - https://chrome.google.com/webstore/detail/keepassxc-browser/oboonakemofpalcgghocfoadofidjkkk?hl=en-US
 - https://chrome.google.com/webstore/detail/i-dont-care-about-cookies/fihnjjcciajhdojfnbdddfaoknhalnja?hl=en-US

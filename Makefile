@@ -83,7 +83,6 @@ stow: brew
 link: stow
 	mkdir -p $(XDG_CONFIG_HOME)
 	rm -rf $(XDG_CONFIG_HOME)/fish $(XDG_CONFIG_HOME)/omf && stow -t $(XDG_CONFIG_HOME) config
-	ln -s $(HOME)/.config/mackup/.mackup.cfg $(HOME)
 
 unlink: stow
 	stow --delete -t $(XDG_CONFIG_HOME) config
