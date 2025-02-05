@@ -62,10 +62,12 @@ colima: brew
 	brew install colima docker docker-compose docker-credential-helper docker-buildx
 
 # -------------- Apps ------------------
-apps: vs-code cask-apps mas-apps
+apps: vs-code vs-code-extensions cask-apps mas-apps
 
 vs-code:
 	brew install --cask visual-studio-code
+
+vs-code-extensions:
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 cask-apps: brew
