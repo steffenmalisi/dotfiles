@@ -23,7 +23,10 @@ make
 ```
 ### 4. Post installation
 
-#### 4.1 Scripts to run manually
+#### 4.1 Setup iTerm2
+- Set fish as default shell
+
+#### 4.2 Scripts to run manually
 - `dotfiles macos`
 - `dotfiles dock`
 
