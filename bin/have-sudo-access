@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+unset HAVE_SUDO_ACCESS
+
+if [[ ! -x "/usr/bin/sudo" ]]
+then
+  exit 1
+fi
+
+SUDO=("/usr/bin/sudo")
+
+if [[ -z "${HAVE_SUDO_ACCESS-}" ]]
+then
+  "${SUDO[@]}" -v && "${SUDO[@]}" -l mkdir &>/dev/null
+  HAVE_SUDO_ACCESS="$?"
+fi
+
+exit "${HAVE_SUDO_ACCESS}"

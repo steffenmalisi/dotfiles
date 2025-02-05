@@ -1,5 +1,4 @@
 SHELL=/bin/bash
-FISH=/usr/local/bin/fish
 SHELLS=/private/etc/shells
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
@@ -16,7 +15,19 @@ all: core packages link
 core: brew fish omf git npm
 
 brew:
-	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+	if ! is-executable brew; then
+	  if have-sudo-access; then
+			# install brew with admin rights, brew's default and recommended install method
+			# https://docs.brew.sh/Installation
+			curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+	  else
+			# install brew without admin rights, brew's alternative install method
+			# https://docs.brew.sh/Installation#untar-anywhere-unsupported
+			mkdir -p $(HOME)/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip-components 1 -C $(HOME)/homebrew
+			eval "$($(HOME)/homebrew/bin/brew shellenv)"
+		fi
+		brew update --force --quiet
+	fi
 
 fish: brew
 	brew install fish pcre
@@ -45,7 +56,7 @@ pipx-packages: brew
 
 omf-packages: omf
 omf-packages: link
-	$(FISH) -c 'omf install'
+	"$(shell brew --prefix)/bin/fish" -c 'omf install'
 
 colima: brew
 	brew install colima docker docker-compose docker-credential-helper docker-buildx
